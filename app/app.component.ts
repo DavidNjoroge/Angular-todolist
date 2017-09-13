@@ -14,9 +14,10 @@ import { Component } from '@angular/core';
 <new-task></new-task>
 </div>
 <div class='col-md-6'>
-<h3>right task</h3>
+<task-list></task-list>
 </div>
 </div>
+
   </div>
   `
 })
@@ -28,9 +29,12 @@ export class AppComponent {
     new Task("Rewatch all the Lord of the Rings movies.", 2),
     new Task("Do the laundry.", 3)
   ];
-  selectedTask: Task = this.tasks[0];
+  selectedTask: Task = null;
   showDetails(clickedTask: Task) {
     this.selectedTask = clickedTask;
+  }
+  finishedEditing() {
+    this.selectedTask = null;
   }
 }
 

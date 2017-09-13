@@ -1,4 +1,12 @@
 h1 {
   text-align: center;
+}
+
+#form {
+  padding-top: 30px;
+}
+
+#asdf {
   color: lightblue;
+  font-weight: bold;
 }
