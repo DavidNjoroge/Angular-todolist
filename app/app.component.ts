@@ -14,7 +14,20 @@ import { Component } from '@angular/core';
 <new-task></new-task>
 </div>
 <div class='col-md-6'>
-<task-list></task-list>
+<task-list
+[childTaskList]="masterTaskList"
+></task-list>
+</div>
+<div *ngIf="selectedTask">
+<div>
+    <label class="form-control-label" for="formGroupExampleInput">Enter Task Description:</label>
+    <input [(ngModel)]="selectedTask.description"type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+  </div>
+  <div>
+  <label class="form-control-label" for="formGroupExampleInput">Task</label>
+  <input [(ngModel)]="selectedTask.id" type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+<button (click)="finishedEditing()">Done</button>
+    </div>
 </div>
 </div>
 
@@ -23,7 +36,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  public tasks: Task[] = [
+  public masterTaskList: Task[] = [
     new Task("Create To-Do List app.", 0),
     new Task("Learn Kung Fu.", 1),
     new Task("Rewatch all the Lord of the Rings movies.", 2),
