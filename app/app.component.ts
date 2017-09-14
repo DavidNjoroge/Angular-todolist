@@ -11,7 +11,9 @@ import { Component } from '@angular/core';
   <div class='container'>
 <div class='row'>
 <div class='col-md-6'>
-<new-task></new-task>
+<new-task
+(newTaskSender)="addTask($event)"
+></new-task>
 <edit-task
   [childSelectedTask]="selectedTask"
   (finishedEditingSender)='finishedEditing()'
@@ -31,18 +33,16 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  public masterTaskList: Task[] = [
-    new Task("Create To-Do List app.", 0),
-    new Task("Learn Kung Fu.", 1),
-    new Task("Rewatch all the Lord of the Rings movies.", 2),
-    new Task("Do the laundry.", 3)
-  ];
+  public masterTaskList: Task[] = [];
   selectedTask: Task = null;
   showDetails(clickedTask: Task) {
     this.selectedTask = clickedTask;
   }
   finishedEditing() {
     this.selectedTask = null;
+  }
+  addTask(newTaskFromChid: Task) {
+    this.masterTaskList.push(newTaskFromChid)
   }
 }
 
