@@ -12,23 +12,18 @@ import { Component } from '@angular/core';
 <div class='row'>
 <div class='col-md-6'>
 <new-task></new-task>
+<edit-task
+  [childSelectedTask]="selectedTask"
+  (finishedEditingSender)='finishedEditing()'
+></edit-task>
 </div>
 <div class='col-md-6'>
 <task-list
 [childTaskList]="masterTaskList"
+(clickSender)='showDetails($event)'
 ></task-list>
 </div>
-<div *ngIf="selectedTask">
-<div>
-    <label class="form-control-label" for="formGroupExampleInput">Enter Task Description:</label>
-    <input [(ngModel)]="selectedTask.description"type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-  </div>
-  <div>
-  <label class="form-control-label" for="formGroupExampleInput">Task</label>
-  <input [(ngModel)]="selectedTask.id" type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-<button (click)="finishedEditing()">Done</button>
-    </div>
-</div>
+
 </div>
 
   </div>
